@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>QueQueQue</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body style="background: #000;">
+    <div class="login">
+        <h1>Previsão de consumo de cerveja</h1>
+
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="text" name="Temperatura Media(C)" placeholder="Temperatura Media(C)" required="required" />
+            <input type="text" name="Temperatura Minima(C)" placeholder="Temperatura Minima(C)" required="required" />
+            <input type="text" name="Temperatura Maxima(C)" placeholder="Temperatura Maxima(C)" required="required" />
+            <input type="text" name="Precipitacao(mm)" placeholder="Precipitacao(mm)" required="required" />
+            <input type="text" name="Final de Semana" placeholder="Final de Semana" required="required" />
+            <button type="submit" class="btn btn-primary btn-block btn-large">Previsão</button>
+        </form>
+
+        <br>
+        <br>
+        {{ prediction_text }}
+
+    </div>
+</body>
+
+</html>
